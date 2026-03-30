@@ -1,17 +1,17 @@
-import { StudyRecord } from "@/types/study";
+import { StudyData, StudyRecord } from "@/types/study";
 
 {/** Storage Save 
     data변수에 현재 저장된 전체 데이터를 복사한 후, 기존 날짜의 값이 있으면 push, 없으면 새로 추가 */}
 
-function SaveStudy (studyRecord:StudyRecord){
+export function saveStudy (studyRecord:StudyRecord){
 
     //오늘 날짜 
     const now = new Date(); 
-    const today = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
+    const today = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
 
     //기존데이터
     const stored = localStorage.getItem("studyData");
-    const data = stored ? JSON.parse(stored) : {};
+    const data:StudyData = stored ? JSON.parse(stored) : {};
 
     //날짜별 처리 
      if (data[today]) {

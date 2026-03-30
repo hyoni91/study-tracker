@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 
-function useTimer (){
+export function useTimer (){
 
     const [startTime, setStartTime] = useState<number | null>(null);
     const [isRunning, setIsRunning] = useState(false);
 
     const start = () =>{
-
         //오늘 날짜가 있다면 더하기
         if(isRunning) return;
 
