@@ -1,6 +1,7 @@
 import { StudyData, StudyRecord } from "@/types/study";
 
 {/** Storage Save 
+    studyStore에서 공부기록을 들고와서, 저장하는 역장
     data변수에 현재 저장된 전체 데이터를 복사한 후, 기존 날짜의 값이 있으면 push, 없으면 새로 추가 */}
 
 export function saveStudy (studyRecord:StudyRecord){

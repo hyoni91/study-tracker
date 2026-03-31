@@ -3,6 +3,7 @@
 import { useTimer } from "@/hooks/useTimer";
 import { saveStudy } from "@/lib/storage";
 import { useState } from "react";
+import GrassGrid from "../grass/GrassGrid";
 
 export default function Timer() {
   const [input, setInput] = useState("");
@@ -16,7 +17,7 @@ export default function Timer() {
     const endData = end();
     if (!endData) return;
     saveStudy({
-      id: crypto.randomUUID(),
+      id: crypto.randomUUID(), //PK (new Date()도 가능하지만, 중복 방지를 위해 UUID추천)
       date: new Date().toISOString().split("T")[0],
       startTime: endData.startTime,
       endTime: endData.endTime,
@@ -45,6 +46,7 @@ export default function Timer() {
           </button>
         </div>
       )}
+      <GrassGrid />
     </div>
   );
 }
