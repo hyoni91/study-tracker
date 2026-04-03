@@ -28,25 +28,42 @@ export default function Timer() {
   };
 
   return (
-    <div>
+  <div className="flex flex-col items-center gap-6 p-6">
+    <h1 className="text-2xl font-bold">Study Tracker</h1>
+    {/* Timer 영역 */}
+    <div className="flex items-center gap-3">
       {isRunning ? (
-        <button type="button" onClick={endHandler}>
+        <button
+          type="button"
+          onClick={endHandler}
+          className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md"
+        >
           End
         </button>
       ) : (
-        <div>
+        <>
           <input
             type="text"
-            placeholder="what are you studying?"
+            placeholder="What are you studying?"
             value={input}
             onChange={inputHandler}
+            className="border px-4 py-2 rounded-md w-64 outline-none focus:ring-2 focus:ring-blue-400"
           />
-          <button type="button" onClick={start}>
+          <button
+            type="button"
+            onClick={start}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+          >
             Start
           </button>
-        </div>
+        </>
       )}
+    </div>
+
+    {/* 잔디 */}
+    <div className="mt-4">
       <GrassGrid />
     </div>
-  );
+  </div>
+);
 }
