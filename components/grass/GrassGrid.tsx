@@ -26,10 +26,10 @@ const chunkDates = (dates: string[]) => {
   return result;
 };
 
-const getStudyData=()=>{
+const getStudyData=():Record<string, StudyRecord[]>=>{
     //로컬 스토리지에서 데이터 가져오기
     const stored = localStorage.getItem("studyData");
-    const data:StudyRecord = stored ? JSON.parse(stored) : {};
+    const data:Record<string, StudyRecord[]> = stored ? JSON.parse(stored) : {};
     return data;
 }
 
