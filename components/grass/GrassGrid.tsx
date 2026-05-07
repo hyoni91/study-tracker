@@ -49,7 +49,7 @@ export default function GrassGrid() {
           {week.map((date) => {
             const records = studyData[date] || []; // 해당 날짜의 기록이 없으면 빈 배열
             return (
-              <GrassCell key={date} date={date} studyData={records} />
+              <GrassCell key={date} date={date} studyData={records} onClick={(date) => {}} />
             );
           })}
         </div>
