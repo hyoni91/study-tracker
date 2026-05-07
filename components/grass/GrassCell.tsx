@@ -24,7 +24,7 @@ export default function GrassCell({date , studyData, onClick} : {date:string, st
         <div className="relative group" onClick={() => onClick(date)}>
 
             <div className={`w-4 h-4 ${bgColor} rounded-sm`} />
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden group-hover:block bg-black text-white text-xs px-2 py-1 rounded">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden group-hover:block group-hover:z-40 bg-black text-white text-xs px-2 py-1 rounded">
                 <div>{date}</div>
                 <div>{formatDurationShort(totalDuration)}</div>
             </div>
