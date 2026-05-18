@@ -1,9 +1,10 @@
 "use client";
 
+import { formatDurationShort } from "@/lib/format";
 import { StudyRecord } from "@/types/study";
 
 
-export default function GrassCell({date , studyData} : {date:string, studyData : StudyRecord[]}){
+export default function GrassCell({date , studyData, onClick} : {date:string, studyData : StudyRecord[], onClick: (date:string) => void}){
     
     const todayData = studyData.filter(record => record.date === date);
     const totalDuration = todayData.reduce((sum, record) => sum + record.duration, 0);
@@ -16,11 +17,19 @@ export default function GrassCell({date , studyData} : {date:string, studyData :
         bgColor = "bg-green-500";
     } else if(durationHours > 2 && durationHours <= 3){
         bgColor = "bg-purple-700";
-    }
+    }  
 
 
     return(
-        <div className={`w-4 h-4 ${bgColor} rounded-sm`}>
+        <div className="relative group" onClick={() => onClick(date)}>
+
+            <div className={`w-4 h-4 ${bgColor} rounded-sm`} />
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden group-hover:block group-hover:z-40 bg-black text-white text-xs px-2 py-1 rounded">
+                <div>{date}</div>
+                <div>{formatDurationShort(totalDuration)}</div>
+            </div>
+
         </div>
+
     )
 }
