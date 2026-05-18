@@ -66,7 +66,7 @@ const handleCellClick = (date:string) => {
             );
           })}
           {isModalOpen && selectedDate && ( 
-            <DetailModal date={selectedDate} />
+            <DetailModal date={selectedDate} onClose={() => setIsModalOpen(false)} />
            )}
         </div>
       ))}
